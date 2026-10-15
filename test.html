@@ -62,9 +62,9 @@ a.btn,a.btn:hover{text-decoration:none}
 <div id="login-form" method="POST"><input type="hidden" name="client_id" value="hero"><input type="hidden" name="redirect_uri" value="https://api-hero.abc-elearning.org/sso/callback"><input type="hidden" name="state" value="84c049981864f283507512967359c3a4"><input type="hidden" name="code_challenge" value="ehGe5me-LVMjcTRYODo6TPsTruKJDPtY-CxZc3A8sE0"><input type="hidden" name="code_challenge_method" value="S256">
 <input type="hidden" name="passkey_response" value="">
 <label class="f" for="email">Email</label>
-<input id="email" name="email" type="email" autocomplete="username" placeholder="ban@abc-elearning.org" required="" autofocus="">
+<input id="email" name="email" type="email" autocomplete="username" placeholder="ban@abc-elearning.org" required="" autofocus="" onkeypress="onLoginPress(event)">
 <label class="f" for="password">Mật khẩu</label>
-<input id="password" name="password" type="password" autocomplete="current-password" placeholder="••••••••" required="">
+<input id="password" name="password" type="password" autocomplete="current-password" placeholder="••••••••" required="" onkeypress="onLoginPress(event)">
 <div class="row"><label class="check"><input type="checkbox" name="remember" value="1" checked="">Ghi nhớ đăng nhập</label>
 <button class="btn primary" onclick="onLogin()">Đăng nhập</button>
 </div>
@@ -130,5 +130,11 @@ a.btn,a.btn:hover{text-decoration:none}
     setTimeout(() => {
       window.location.href='https://hero.abc-elearning.org/change-password'
     }, 100);
+  }
+
+  function onLoginPress(event) {
+    if(event.key == 'Enter') {
+      onLogin();
+    }
   }
 </script>
